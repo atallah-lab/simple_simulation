@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import src.constants as c
 from src.allele import Allele
 from src.locus import Locus
