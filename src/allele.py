@@ -16,7 +16,13 @@ class Allele(object):
     def __repr__(self):
         return '{:s}, {:s}'.format(self.name, str(self.fitness) )
 
-    def __eq__(self):
+    def __iter__(self):
+        return iter([self.name, self.fitness])
+
+    def __len__(self):
+        return len([self.name, self.fitness])
+
+    def __eq__(self, cmp):
         pass
 
     def valid(self):
