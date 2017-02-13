@@ -64,7 +64,7 @@ class TestPopulation(unittest.TestCase):
         pass
 
     def test_create_population(self):
-        p = Population(size=9)
+        p = Population(size=c.MAX_POPULATION)
         self.assertEqual(p.size, c.MAX_POPULATION)
         pop = p.create_population()
         for p in pop: # for ech individual in population
