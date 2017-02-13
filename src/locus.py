@@ -30,6 +30,9 @@ class Locus(object):
 
         self.alleles = self.alleles + allele_list
 
+    def __iter__(self):
+        return iter(self.alleles)
+
     def __getslice__(self, a, b):
         """ Returns a slice of alleles list """
         return self.alleles[a:b]
