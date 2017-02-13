@@ -65,7 +65,7 @@ class TestPopulation(unittest.TestCase):
 
     def test_create_population(self):
         p = Population(size=9)
-        self.assertEqual(p.size, 9)
+        self.assertEqual(p.size, c.MAX_POPULATION)
         pop = p.create_population()
         for p in pop: # for ech individual in population
             self.assertEqual( len(p.get_genotype()), c.ALLELE_RANGE[1] )
