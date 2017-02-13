@@ -30,8 +30,6 @@ class Population(object):
         numerator = 1
         if individuals is None:
             individuals = self.create_population()
-            print ('individuals is none, setting that up...')
-
         population_list = self.get_alleles_as_list(individuals)
 
         for allele in population_list:
