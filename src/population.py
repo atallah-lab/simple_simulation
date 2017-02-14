@@ -5,7 +5,7 @@ from src.allele import Allele
 from src.locus import Locus
 from src.individual import Individual
 try:
-    import tabulate
+    from tabulate import tabulate
 except ImportError:
     raise ImportError('pip install tabulate')
 
@@ -43,9 +43,11 @@ class Population(object):
         return (allele_count / len(population_list))
 
     def summarize_population(self, individuals):
+        '''
+        Usage:
+        >> print (p.summarize_population(individuals)))
+        '''
+        table = []
         for idx, ind in enumerate(individuals):
-            print ('Ind ' + ' Genotype ' + ' Fitness ')
-
-            print ('{:d}, {:s}, {:4.2f}'.format(idx,
-                                            ind.get_genotype(),
-                                            ind.get_fitness()) )
+            table.append([idx, ind.get_genotype(), ind.get_fitness()])
+        return tabulate(table)
