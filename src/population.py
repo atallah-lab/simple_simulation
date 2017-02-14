@@ -4,6 +4,10 @@ import src.constants as c
 from src.allele import Allele
 from src.locus import Locus
 from src.individual import Individual
+try:
+    import tabulate
+except ImportError:
+    raise ImportError('pip install tabulate')
 
 class Population(object):
 
@@ -17,9 +21,9 @@ class Population(object):
             individuals.append(Individual(loci))
         return individuals
 
-    def get_alleles_as_list(self, population): #TODO case without population.
+    def get_alleles_as_list(self, individuals): #TODO case without a population.
         allele_list = []
-        for individual in population:
+        for individual in individuals:
             for allele in individual.alleles:
                 allele_list.append(allele)
 
@@ -37,3 +41,11 @@ class Population(object):
             if name == target_allele:
                 allele_count += 1
         return (allele_count / len(population_list))
+
+    def summarize_population(self, individuals):
+        for idx, ind in enumerate(individuals):
+            print ('Ind ' + ' Genotype ' + ' Fitness ')
+
+            print ('{:d}, {:s}, {:4.2f}'.format(idx,
+                                            ind.get_genotype(),
+                                            ind.get_fitness()) )
