@@ -46,7 +46,8 @@ class Population(object):
     def summarize_population(self):
         '''
         Usage:
-        >> print (p.summarize_population(individuals)))
+        >> p = Population()
+        >> print (p.summarize_population()))
         '''
         table = []
         for idx, ind in enumerate(self.individuals):
