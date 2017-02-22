@@ -85,8 +85,11 @@ class TestPopulation(unittest.TestCase):
             loci = [locus_1, locus_2, locus_3]
             individuals.append(Individual(loci))
 
-    def test_summarize_population_alleles(self):
-        pass
+    def test_get_random_allele_from_population(self):
+        pop = Population()
+        ra1 = pop.get_random_allele_from_population()
+        ra2 = pop.get_random_allele_from_population()
+        self.assertIsNot(ra1, ra2)
 
 class TestGeneration(unittest.TestCase):
     def setUp(self):
