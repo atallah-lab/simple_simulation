@@ -4,6 +4,10 @@ import random
 import src.constants as c
 
 class Allele(object):
+    '''
+    docstring ...
+    '''
+    
     def __init__(self, name, fitness=None):
         self.name = name
         if fitness == None:

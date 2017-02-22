@@ -6,7 +6,10 @@ import src.constants as c
 from src.allele import Allele
 
 class Locus(object):
-
+    '''
+    docstring ...
+    '''
+    
     def __init__(self, name, randomAlleles=False):
         self.name = name
         self.alleles = []
