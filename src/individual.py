@@ -12,13 +12,13 @@ class Individual(object):
             self.alleles = loci.alleles
 
     def get_genotype(self):
-        result = ''
+        genotype = ''
         for a in self.alleles:
-            result = result + a.name
-        return result
+            genotype = genotype + a.name
+        return genotype
 
     def get_fitness(self):
         full_fitness = 1
         for a in self.alleles:
             full_fitness = full_fitness * a.fitness
-        return full_fitness
+        return '{0:.3g}'.format(full_fitness)

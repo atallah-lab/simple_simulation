@@ -2,6 +2,7 @@
 '''
     Unittest under a variety of conditions.
 '''
+import random
 import unittest
 import os
 
@@ -19,10 +20,6 @@ class TestAllele(unittest.TestCase):
         a = Allele('A') # dominant allele
         self.assertEqual(a.name, 'A')
         self.assertGreater(a.fitness, c.FITNESS_DOMINANT[0])
-
-        b = Allele('b') # recessive allele
-        self.assertEqual(b.name, 'b')
-        self.assertLess(b.fitness, c.FITNESS_DOMINANT[0])
 
 class TestLocus(unittest.TestCase):
     def setUp(self):
@@ -76,8 +73,8 @@ class TestPopulation(unittest.TestCase):
     def test_create_population1(self):
         p = Population()
         self.assertEqual(p.size, c.MAX_POPULATION)
-        for p in population: # for each individual in population
-            self.assertEqual( len(p.get_genotype()), c.ALLELE_RANGE[1] )
+        for individual in p.individuals: # for each ind in population
+            self.assertEqual( len(individual.get_genotype()), c.ALLELE_RANGE[1] )
 
     def test_create_population2(self):
         individuals = []
@@ -91,6 +88,18 @@ class TestPopulation(unittest.TestCase):
     def test_summarize_population_alleles(self):
         pass
 
+class TestGeneration(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_prune_one_generation(self):
+        pop = Population()
+        original_size = len(pop.individuals)
+        for individual in pop.individuals:
+            if random.random() > float(individual.get_fitness()):
+                pop.individuals.remove(individual)
+        new_size = len(pop.individuals)
+        self.assertIsNot(original_size, new_size)
 
 if __name__ == '__main__':
     unittest.main()
