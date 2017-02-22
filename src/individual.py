@@ -4,6 +4,9 @@ import src.constants as c
 from src.allele import Allele
 
 class Individual(object):
+    '''
+    docstring ...
+    '''
 
     def __init__(self, loci):
         if type(loci) == list:

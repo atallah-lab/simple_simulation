@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import random
 import src.constants as c
 from src.allele import Allele
 from src.locus import Locus
@@ -7,20 +7,23 @@ from src.individual import Individual
 try:
     from tabulate import tabulate
 except ImportError:
-    raise ImportError('pip install tabulate')
+    raise ImportError('>> pip install tabulate')
 
 class Population(object):
+    '''
+    docstring ...
+    '''
 
     def __init__(self, size=c.MAX_POPULATION, individuals=None):
-        self.size = size
         if individuals is None:
             self.individuals = self.__create_population()
         else:
             self.individuals = individuals
+        self.size = len(self.individuals)
 
     def __create_population(self):
         individuals = []
-        for i in range(0, self.size):
+        for i in range(0, c.MAX_POPULATION):
             loci = Locus(str(i), randomAlleles=True)
             individuals.append(Individual(loci))
         return individuals
@@ -42,6 +45,12 @@ class Population(object):
             if name == target_allele:
                 allele_count += 1
         return (allele_count / len(population_list))
+
+    def get_random_allele_from_population(self):
+        return random.choice(self.get_alleles_as_list())
+
+    def add_new_individual_to_population(self, individual):
+        self.individuals.append(individual)
 
     def summarize_population(self):
         '''
