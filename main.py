@@ -13,7 +13,8 @@ from src.individual import Individual
 from src.population import Population
 
 def summarize_alleles_per_generation(p):
-    generations = 100
+    alleles = ['A', 'a', 'T', 't', 'C', 'c', 'G', 'g']
+    generations = 30
     original_population_size = c.MAX_POPULATION
     remaining_population_size = 0
     #print ('length at begining of generation {:d} is {:d}'.format(generation+1, len(p.individuals)))
@@ -34,9 +35,8 @@ def summarize_alleles_per_generation(p):
             p.add_new_individual_to_population(Individual(random_alleles))
 
         print ('For generation {:d} allele frequency is:'.format(generation+1))
-        #p.summarize_population()
 
-        for allele in ['A', 'a', 'T', 't', 'C', 'c', 'G', 'g']:
+        for allele in alleles:
             print (allele, p.get_allele_frequency(allele))
 
 if __name__ == '__main__':
