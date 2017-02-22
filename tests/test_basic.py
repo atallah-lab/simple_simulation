@@ -52,23 +52,46 @@ class TestIndividual(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_create_individual(self):
-        loci_1 = Locus('1', randomAlleles=True)
-        loci_2 = Locus('2', randomAlleles=True)
-        i1 = Individual(loci_1)
-        i2 = Individual(loci_2)
+    def test_create_individual1(self):
+        locus_1 = Locus('1', randomAlleles=True)
+        locus_2 = Locus('2', randomAlleles=True)
+        i1 = Individual(locus_1)
+        i2 = Individual(locus_2)
         self.assertIsNot(i1.get_fitness(), i2.get_fitness())
+
+    def test_create_individual2(self):
+        alleles_for_individual = []
+        locus_1 = Locus('1', randomAlleles=True)
+        locus_2 = Locus('2', randomAlleles=True)
+        locus_3 = Locus('3', randomAlleles=True)
+        loci = [locus_1, locus_2, locus_3]
+        for locus in loci:
+            alleles_for_individual.append(locus.get_random_allele())
+        ind = Individual(alleles_for_individual)
 
 class TestPopulation(unittest.TestCase):
     def setUp(self):
         pass
 
-    def test_create_population(self):
+    def test_create_population1(self):
         p = Population(size=c.MAX_POPULATION)
         self.assertEqual(p.size, c.MAX_POPULATION)
-        pop = p.create_population()
-        for p in pop: # for ech individual in population
+        population = p.create_population()
+        for p in population: # for each individual in population
             self.assertEqual( len(p.get_genotype()), c.ALLELE_RANGE[1] )
+
+    def test_create_population2(self):
+        individuals = []
+        for i in range(c.MAX_POPULATION):
+            locus_1 = Locus('1', randomAlleles=True)
+            locus_2 = Locus('2', randomAlleles=True)
+            locus_3 = Locus('3', randomAlleles=True)
+            loci = [locus_1, locus_2, locus_3]
+            individuals.append(Individual(loci))
+
+    def test_summarize_population_alleles(self):
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
