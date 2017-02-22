@@ -11,30 +11,31 @@ except ImportError:
 
 class Population(object):
 
-    def __init__(self, size=10):
+    def __init__(self, size=c.MAX_POPULATION, individuals=None):
         self.size = size
+        if individuals is None:
+            self.individuals = self.__create_population()
+        else:
+            self.individuals = individuals
 
-    def create_population(self):
+    def __create_population(self):
         individuals = []
         for i in range(0, self.size):
             loci = Locus(str(i), randomAlleles=True)
             individuals.append(Individual(loci))
         return individuals
 
-    def get_alleles_as_list(self, individuals): #TODO case without a population.
+    def get_alleles_as_list(self):
         allele_list = []
-        for individual in individuals:
+        for individual in self.individuals:
             for allele in individual.alleles:
                 allele_list.append(allele)
-
         return allele_list
 
-    def get_allele_frequency(self, target_allele, individuals=None):
+    def get_allele_frequency(self, target_allele):
         allele_count = 0
         numerator = 1
-        if individuals is None:
-            individuals = self.create_population()
-        population_list = self.get_alleles_as_list(individuals)
+        population_list = self.get_alleles_as_list()
 
         for allele in population_list:
             name, fitness = allele
@@ -42,12 +43,12 @@ class Population(object):
                 allele_count += 1
         return (allele_count / len(population_list))
 
-    def summarize_population(self, individuals):
+    def summarize_population(self):
         '''
         Usage:
         >> print (p.summarize_population(individuals)))
         '''
         table = []
-        for idx, ind in enumerate(individuals):
+        for idx, ind in enumerate(self.individuals):
             table.append([idx, ind.get_genotype(), ind.get_fitness()])
-        return tabulate(table)
+        print (tabulate(table))

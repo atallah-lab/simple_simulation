@@ -31,11 +31,14 @@ class Locus(object):
         self.alleles = self.alleles + allele_list
 
     def get_random_allele(self):
-        return random.choice(self.alleles) 
+        return random.choice(self.alleles)
 
     def __iter__(self):
         return iter(self.alleles)
 
     def __repr__(self):
-        return '{:s}: {:s}'.format(self.name,
-                ','.join([x.name for x in self.alleles]))
+        if (len(self.alleles) > 0):
+            return '{:s}: {:s}'.format(self.name,
+                    ','.join([x.name for x in self.alleles]))
+        else:
+            return '{:s}'.format(self.name)

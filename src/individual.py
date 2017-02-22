@@ -6,7 +6,10 @@ from src.allele import Allele
 class Individual(object):
 
     def __init__(self, loci):
-        self.alleles = loci.alleles
+        if type(loci) == list:
+            self.alleles = [x for x in loci]
+        else:
+            self.alleles = loci.alleles
 
     def get_genotype(self):
         result = ''
