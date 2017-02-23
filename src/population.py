@@ -17,7 +17,7 @@ class Population(object):
 
     def __init__(self, individuals=None):
         """
-        :type individuals: object
+        :type individuals: Individual
         """
         if individuals is None:
             self.individuals = self.__create_population

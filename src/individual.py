@@ -8,11 +8,12 @@ class Individual(object):
     """
     docstring ...
     """
-    
+
     def __init__(self, loci):
         if type(loci) == list:
             self.alleles = [x for x in loci]
         else:
+            assert isinstance(loci.alleles, Locus)
             self.alleles = loci.alleles
 
     @property
