@@ -9,18 +9,23 @@ try:
 except ImportError:
     raise ImportError('>> pip install tabulate')
 
-class Population(object):
-    '''
-    docstring ...
-    '''
 
-    def __init__(self, size=c.MAX_POPULATION, individuals=None):
+class Population(object):
+    """
+    docstring ...
+    """
+
+    def __init__(self, individuals=None):
+        """
+        :type individuals: object
+        """
         if individuals is None:
-            self.individuals = self.__create_population()
+            self.individuals = self.__create_population
         else:
             self.individuals = individuals
         self.size = len(self.individuals)
 
+    @property
     def __create_population(self):
         individuals = []
         for i in range(0, c.MAX_POPULATION):
@@ -28,6 +33,7 @@ class Population(object):
             individuals.append(Individual(loci))
         return individuals
 
+    @property
     def get_alleles_as_list(self):
         allele_list = []
         for individual in self.individuals:
@@ -38,7 +44,7 @@ class Population(object):
     def get_allele_frequency(self, target_allele):
         allele_count = 0
         numerator = 1
-        population_list = self.get_alleles_as_list()
+        population_list = self.get_alleles_as_list
 
         for allele in population_list:
             name, fitness = allele
@@ -46,8 +52,9 @@ class Population(object):
                 allele_count += 1
         return (allele_count / len(population_list))
 
+    @property
     def get_random_allele_from_population(self):
-        return random.choice(self.get_alleles_as_list())
+        return random.choice(self.get_alleles_as_list)
 
     def add_new_individual_to_population(self, individual):
         self.individuals.append(individual)
@@ -60,5 +67,5 @@ class Population(object):
         '''
         table = []
         for idx, ind in enumerate(self.individuals):
-            table.append([idx, ind.get_genotype(), ind.get_fitness()])
+            table.append([idx, ind.get_genotype, ind.get_fitness])
         print (tabulate(table))

@@ -4,10 +4,10 @@ import random
 import src.constants as c
 
 class Allele(object):
-    '''
+    """
     docstring ...
-    '''
-    
+    """
+
     def __init__(self, name, fitness=None):
         self.name = name
         if fitness == None:
@@ -25,14 +25,6 @@ class Allele(object):
     def __iter__(self):
         return iter([self.name, self.fitness])
 
+    @property
     def __len__(self):
         return len([self.name, self.fitness])
-
-    def __eq__(self, cmp):
-        pass
-
-    def valid(self):
-        '''
-        Check the validity of allele string
-        '''
-        pass

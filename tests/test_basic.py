@@ -54,7 +54,7 @@ class TestIndividual(unittest.TestCase):
         locus_2 = Locus('2', randomAlleles=True)
         i1 = Individual(locus_1)
         i2 = Individual(locus_2)
-        self.assertIsNot(i1.get_fitness(), i2.get_fitness())
+        self.assertIsNot(i1.get_fitness, i2.get_fitness)
 
     def test_create_individual2(self):
         alleles_for_individual = []
@@ -74,7 +74,7 @@ class TestPopulation(unittest.TestCase):
         p = Population()
         self.assertEqual(p.size, c.MAX_POPULATION)
         for individual in p.individuals: # for each ind in population
-            self.assertEqual( len(individual.get_genotype()), c.ALLELE_RANGE[1] )
+            self.assertEqual(len(individual.get_genotype), c.ALLELE_RANGE[1])
 
     def test_create_population2(self):
         individuals = []
@@ -87,8 +87,8 @@ class TestPopulation(unittest.TestCase):
 
     def test_get_random_allele_from_population(self):
         pop = Population()
-        ra1 = pop.get_random_allele_from_population()
-        ra2 = pop.get_random_allele_from_population()
+        ra1 = pop.get_random_allele_from_population
+        ra2 = pop.get_random_allele_from_population
         self.assertIsNot(ra1, ra2)
 
 class TestGeneration(unittest.TestCase):
@@ -99,7 +99,7 @@ class TestGeneration(unittest.TestCase):
         pop = Population()
         original_size = len(pop.individuals)
         for individual in pop.individuals:
-            if random.random() > float(individual.get_fitness()):
+            if random.random() > float(individual.get_fitness):
                 pop.individuals.remove(individual)
         new_size = len(pop.individuals)
         self.assertIsNot(original_size, new_size)

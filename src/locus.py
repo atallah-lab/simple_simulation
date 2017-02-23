@@ -5,6 +5,7 @@ import string
 import src.constants as c
 from src.allele import Allele
 
+
 class Locus(object):
     '''
     docstring ...
@@ -28,7 +29,10 @@ class Locus(object):
             self.alleles.append(allele)
 
     def add_allele_list(self, allele_list=[]):
-        if ( len(allele_list) + len(self.alleles) > c.ALLELE_RANGE[1]-1):
+        """
+        :type allele_list: object
+        """
+        if  len(allele_list) + len(self.alleles) > c.ALLELE_RANGE[1]-1:
             raise ValueError('Number of alleles per locus has been exceeded.')
 
         self.alleles = self.alleles + allele_list
@@ -39,8 +43,9 @@ class Locus(object):
     def __iter__(self):
         return iter(self.alleles)
 
+    @property
     def __repr__(self):
-        if (len(self.alleles) > 0):
+        if len(self.alleles) > 0:
             return '{:s}: {:s}'.format(self.name,
                     ','.join([x.name for x in self.alleles]))
         else:

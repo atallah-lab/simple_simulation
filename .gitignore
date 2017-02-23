@@ -35,6 +35,13 @@ wheels/
 pip-log.txt
 pip-delete-this-directory.txt
 
+# PyCharm
+.idea/*
+# User-specific stuff:
+
+
+
+
 # Unit test / coverage reports
 htmlcov/
 .tox/

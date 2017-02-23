@@ -30,7 +30,7 @@ class TestGeneration(unittest.TestCase):
         new_individuals = []
         for generation in range(0, generations):
             for individual in p.individuals:
-                if random.random() > float(individual.get_fitness()):
+                if random.random() > float(individual.get_fitness):
                     p.individuals.remove(individual)
 
             self.assertIsNot(len(p.individuals), original_population_size)
@@ -41,7 +41,7 @@ class TestGeneration(unittest.TestCase):
             for i in range(diff):
                 random_alleles = []
                 for j in range(c.ALLELE_RANGE[0], c.ALLELE_RANGE[1]):
-                    random_alleles.append(p.get_random_allele_from_population())
+                    random_alleles.append(p.get_random_allele_from_population)
                 p.add_new_individual_to_population(Individual(random_alleles))
 
             self.assertEqual(len(p.individuals), original_population_size)
