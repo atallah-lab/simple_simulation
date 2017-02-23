@@ -12,7 +12,7 @@ except ImportError:
 
 class Population(object):
     """
-    docstring ...
+    docstring
     """
 
     def __init__(self, individuals=None):
@@ -60,11 +60,11 @@ class Population(object):
         self.individuals.append(individual)
 
     def summarize_population(self):
-        '''
+        """
         Usage:
         >> p = Population()
         >> print (p.summarize_population()))
-        '''
+        """
         table = []
         for idx, ind in enumerate(self.individuals):
             table.append([idx, ind.get_genotype, ind.get_fitness])

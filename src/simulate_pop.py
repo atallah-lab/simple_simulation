@@ -1,4 +1,3 @@
-%pylab inline
 import random
 import collections
 import math

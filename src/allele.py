@@ -3,6 +3,7 @@
 import random
 import src.constants as c
 
+
 class Allele(object):
     """
     docstring ...
@@ -12,10 +13,11 @@ class Allele(object):
         self.name = name
         if fitness == None:
             if name.isupper():
-                self.fitness = random.uniform(c.FITNESS_DOMINANT[0], 1)
+                self.fitness = random.uniform(
+                c.FITNESS_DOMINANT[0], c.FITNESS_DOMINANT[1])
             else:
-                self.fitness = random.uniform(c.FITNESS_RECESSIVE[0],
-                                    c.FITNESS_RECESSIVE[1])
+                self.fitness = random.uniform(
+                c.FITNESS_RECESSIVE[0],c.FITNESS_RECESSIVE[1])
         else:
             self.fitness = fitness
 
