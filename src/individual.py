@@ -2,6 +2,7 @@
 
 import src.constants as c
 from src.allele import Allele
+from src.locus import Locus
 
 
 class Individual(object):
@@ -13,7 +14,6 @@ class Individual(object):
         if type(loci) == list:
             self.alleles = [x for x in loci]
         else:
-            assert isinstance(loci.alleles, Locus)
             self.alleles = loci.alleles
 
     @property
