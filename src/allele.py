@@ -3,7 +3,6 @@
 import random
 import src.constants as c
 
-
 class Allele(object):
     """
     docstring ...
