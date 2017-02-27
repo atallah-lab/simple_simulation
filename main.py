@@ -14,10 +14,9 @@ from src.population import Population
 
 
 def summarize_alleles_per_generation(p):
-    alleles = ['A', 'a', 'B', 'b', 'C', 'c']
+    alleles = c.DNA_UPPER + c.DNA_LOWER
     generations = 30
     original_population_size = c.MAX_POPULATION
-    remaining_population_size = 0
     # print ('length at begining of generation {:d} is {:d}'.format(generation+1, len(p.individuals)))
 
     for generation in range(0, generations):
