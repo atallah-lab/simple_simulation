@@ -54,6 +54,7 @@ class Population(object):
 
     @property
     def get_random_allele_from_population(self):
+        random.shuffle(self.get_alleles_as_list)
         return random.choice(self.get_alleles_as_list)
 
     def add_new_individual_to_population(self, individual):
