@@ -45,7 +45,3 @@ class TestGeneration(unittest.TestCase):
                 p.add_new_individual_to_population(Individual(random_alleles))
 
             self.assertEqual(len(p.individuals), original_population_size)
-
-
-if __name__ == '__main__':
-    unittest.main()

@@ -103,6 +103,3 @@ class TestGeneration(unittest.TestCase):
                 pop.individuals.remove(individual)
         new_size = len(pop.individuals)
         self.assertIsNot(original_size, new_size)
-
-if __name__ == '__main__':
-    unittest.main()
