@@ -7,6 +7,7 @@ import unittest
 import os
 
 import src.constants as c
+import src.alphabet as ab
 from src.allele import Allele
 from src.locus import Locus
 from src.individual import Individual

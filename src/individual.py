@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import src.constants as c
+import src.alphabet as ab
 from src.allele import Allele
 from src.locus import Locus
 

@@ -2,6 +2,7 @@
 
 import random
 import src.constants as c
+import src.alphabet as ab
 
 class Allele(object):
     """

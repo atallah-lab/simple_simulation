@@ -3,6 +3,7 @@
 import random
 import string
 import src.constants as c
+import src.alphabet as ab
 from src.allele import Allele
 
 
@@ -15,7 +16,7 @@ class Locus(object):
         self.name = name
         self.alleles = []
         if randomAlleles:
-            allele_names = [random.choice(c.DNA_UPPER + c.DNA_LOWER) for _ in
+            allele_names = [random.choice(ab.DNA_UPPER + ab.DNA_LOWER) for _ in
                         range(c.ALLELE_RANGE[0], c.ALLELE_RANGE[1])]
             for name in allele_names:
                 self.alleles.append(Allele(name))
@@ -24,7 +25,7 @@ class Locus(object):
         if len(self.alleles) > c.ALLELE_RANGE[1]-1:
             raise ValueError('Number of alleles per locus has been exceeded.')
         if allele == None:
-            self.alleles.append(Allele(random.choice(c.DNA_UPPER + c.DNA_LOWER)))
+            self.alleles.append(Allele(random.choice(ab.DNA_UPPER + ab.DNA_LOWER)))
         else:
             self.alleles.append(allele)
 
